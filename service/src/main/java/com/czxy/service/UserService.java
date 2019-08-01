@@ -23,4 +23,17 @@ public class UserService {
         List<User> userList = userMapper.selectByExample(example);
         return userList;
     }
+
+
+    public List<User> register(User user){
+        Example example=new Example(User.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("username",user.getUsername());
+        List<User> list = userMapper.selectByExample(example);
+        return list;
+    }
+
+    public void addUser(User user){
+        userMapper.insert(user);
+    }
 }
