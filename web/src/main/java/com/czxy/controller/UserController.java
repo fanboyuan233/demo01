@@ -57,4 +57,30 @@ public class UserController {
             return new ResponseEntity<>("服务器错误",HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping("/findAll")
+    public ResponseEntity<List<User>> findAll(){
+        try {
+            List<User> list = userService.findAll();
+            for (User user : list) {
+                System.out.println(user);
+            }
+            return new ResponseEntity<>(list,HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/exit")
+    public ResponseEntity<Void> exit(HttpServletRequest request){
+        try {
+            request.getSession().invalidate();
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }

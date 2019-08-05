@@ -13,12 +13,24 @@ public class myInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String url = request.getRequestURL().toString();
+        System.out.println("url="+url);
         User loginU = (User) request.getSession().getAttribute("loginU");
+        System.out.println("in="+loginU);
         if (url.contains("/login") || url.contains("/register") || url.contains("/css") || url.contains("/fonts") || url.contains("/js") || url.contains("/assets") || url.contains("/images") || url.contains("/jqvmap")) {
             return true;
         } else {
             if (loginU == null) {
                 response.sendRedirect("login.html");
+                return false;
+            }
+            if(loginU.getPid()==2&&url.contains("/manage-users")){
+                response.sendRedirect("preferences.html");
+
+                return false;
+            }
+            if (loginU.getPid()==3&&url.contains("/manage-users")){
+                response.sendRedirect("preferences.html");
+
                 return false;
             }
             return true;

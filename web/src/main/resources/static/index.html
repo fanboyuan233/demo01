@@ -49,6 +49,24 @@
         })
 
 
+        function myExit() {
+            $.ajax({
+                url:"/user/exit",
+                type:"get",
+                statusCode:{
+                    200:function () {
+                        location.href="login.html"
+                    },
+                    500:function () {
+                        alert("服务器异常")
+                    }
+                }
+            })
+        }
+
+       function myTip() {
+
+       }
     </script>
     <style>
         input{
@@ -124,10 +142,10 @@
     <div class="nav-box">
         <div class="nav">
             <ul class="nav-ul">
-                <li><a href="index.html" class="home"><span>首页</span></a></li>
-                <li><a href="#" class="develop"><span>研发</span></a></li>
-                <li><a href="#" class="wechat"><span>测试</span></a></li>
-                <li><a href="#" class="case"><span>系统管理</span></a></li>
+                <li><a href="index.html" class="home"><span>所有游戏</span></a></li>
+                <li><a href="#" class="develop"><span>射击类</span></a></li>
+                <li><a href="#" class="wechat"><span>棋牌类</span></a></li>
+                <li><a href="#" class="case"><span>冒险类</span></a></li>
                 <!-- <li><a href="#" class="news"><span>信息资讯</span></a></li>
               <li><a href="#" class="contact"><span>关于我们</span></a></li> -->
             </ul>
@@ -225,13 +243,13 @@
 <!-- Main content -->
 <div class="templatemo-content col-1 light-gray-bg" style="float: right">
     <div class="templatemo-top-nav-container">
-        <div class="row">
+        <div class="row" style="float: right;">
             <nav class="templatemo-top-nav col-lg-12 col-md-12">
                 <ul class="text-uppercase">
-                    <li><a href="" class="active">Admin panel</a></li>
-                    <li><a href="">Dashboard</a></li>
-                    <li><a href="">Overview</a></li>
-                    <li><a href="login.html">Sign in form</a></li>
+                    <li><a href="" class="active">主页</a></li>
+                    <li><a href="">近期在玩</a></li>
+                    <li><a href="manage-users.html" onclick="myTip()">用户管理</a></li>
+                    <li><a href="javascript:myExit()">退出</a></li>
                 </ul>
             </nav>
         </div>
@@ -391,14 +409,14 @@
                     <div class="templatemo-flex-row flex-content-row">
                         <div class="col-1 col-lg-6 col-md-12">
                             <h2 class="text-center">即将发行<span class="badge">贪玩大数据</span></h2>
-                            <div id="pie_chart_div" class="templatemo-chart">
+                            <div id="pie_chart_div" class="templatemo-chart" align="center">
                                 <img style="width: 500px ; height: 400px" src="http://5b0988e595225.cdn.sohucs.com/q_70,c_zoom,w_640/images/20180201/5e3e5165ed3545c197d125b356abb45c.gif" >
                             </div> <!-- Pie chart div -->
                         </div>
 
                         <div class="col-1 col-lg-6 col-md-12">
                             <h2 class="text-center">正在开发<span class="badge">一刀9999999</span></h2>
-                            <div id="bar_chart_div" class="templatemo-chart">
+                            <div id="bar_chart_div" class="templatemo-chart" align="center">
                                 <img  style="width: 500px ; height: 400px" src=" http://img.mp.itc.cn/upload/20170609/0cccad4fa3914d9fb3f0a6519615ede6_th.jpg">
                             </div> <!-- Bar chart div -->
                         </div>
